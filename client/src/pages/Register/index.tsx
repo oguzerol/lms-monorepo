@@ -98,6 +98,8 @@ const Register = () => {
       await axios
         .post(API_REGISTER, {
           email: values.email,
+          password: values.password,
+          username: values.username_,
         })
         .then(() => {
           history.replace(URL_LOGIN);

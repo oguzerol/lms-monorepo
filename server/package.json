@@ -11,10 +11,11 @@
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
     "test": "jest --coverage",
-    "backshell": "docker exec -it lms-backend_backend_1 sh",
+    "backshell": "docker exec -it lms-api_1 sh",
+    "postgrehost": "docker exec lms_postgres_1 cat /etc/hosts",
     "dockerdevstart": "docker-compose --env-file ./config/enviroment/.development up  -d --build",
-    "backlog": "docker logs lms-backend_backend_1  -f --tail 500",
-    "pglog": "docker logs backend_postgres_1  -f --tail 500"
+    "backlog": "docker logs lms_api_1  -f --tail 500",
+    "pglog": "docker logs lms_postgres_1  -f --tail 500"
   },
   "keywords": [],
   "author": "oguzerol91@gmail.com",
