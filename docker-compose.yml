@@ -1,0 +1,65 @@
+version: "3"
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_MULTIPLE_DATABASES=${POSTGRES_DB},test
+    volumes:
+      - ./server/docker-data/db-data:/var/lib/postgresql/data
+      - ./server/pg-init-script:/docker-entrypoint-initdb.d
+
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - "3000:80"
+
+  pgadmin:
+    depends_on:
+      - postgres
+    restart: always
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+
+  client:
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+
+  api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - jwtSecret=${jwtSecret}
+      - jwtResetSecret=${jwtResetSecret}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - CLIENT_ADDRESS=${CLIENT_ADDRESS}
+      - MAIL_USER=${MAIL_USER}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules

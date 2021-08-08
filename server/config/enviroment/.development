@@ -1,0 +1,9 @@
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=admin
+POSTGRES_DB=lms
+CLIENT_ADDRESS=http://localhost:9001
+jwtSecret=bismillah
+jwtResetSecret=bismillahReset
+NODE_ENV=development
+MAIL_USER=onlineydt@gmail.com
+MAIL_PASSWORD=Asdqwe123

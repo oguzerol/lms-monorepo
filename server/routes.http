@@ -1,0 +1,100 @@
+@host =http://localhost:7000
+
+
+GET {{host}}
+
+### Get Api
+GET {{host}}/api/v1
+
+### Get Users
+GET {{host}}/api/v1/users
+
+### Get Exams
+GET {{host}}/api/v1/exams
+
+### enroll Exams
+POST {{host}}/api/v1/exams/1/enroll
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Im9ndXplcm9sIiwiZW1haWwiOiJvZUBvbmxpbmV5ZHQuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19zdXBlcnVzZXIiOnRydWV9LCJpYXQiOjE2MjcxNDkyNTEsImV4cCI6MTYyNzE3MDg1MX0.vWwAmlijUaLzErA8ObLNlGapF-e8EOr3bBhNgoY61BU
+
+### Get User Exams
+GET {{host}}/api/v1/user/exams
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Im9ndXplcm9sIiwiZW1haWwiOiJvZUBvbmxpbmV5ZHQuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19zdXBlcnVzZXIiOnRydWV9LCJpYXQiOjE2MTUzNjc3NDksImV4cCI6MTYxNTM4OTM0OX0.FLLrFNMeTLRcXuJ14MQ2nZCnqXj7Hyr9b7LqEIQNJQM
+
+
+### Get User Specific Exams
+GET {{host}}/api/v1/user/exams/1
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Im9ndXplcm9sIiwiZW1haWwiOiJvZUBvbmxpbmV5ZHQuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19zdXBlcnVzZXIiOnRydWV9LCJpYXQiOjE2MTUzMjEyNzQsImV4cCI6MTYxNTM0Mjg3NH0.NX1YLRwrsWVwCfJFoPLW0GA0GQTxmteClERkLgYH6k8
+
+### START User Specific Exams
+PUT {{host}}/api/v1/user/exams/1/start
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Im9ndXplcm9sIiwiZW1haWwiOiJvZUBvbmxpbmV5ZHQuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19zdXBlcnVzZXIiOnRydWV9LCJpYXQiOjE2MTUzNjc3NDksImV4cCI6MTYxNTM4OTM0OX0.FLLrFNMeTLRcXuJ14MQ2nZCnqXj7Hyr9b7LqEIQNJQM
+
+
+### END User Specific Exams
+PUT {{host}}/api/v1/user/exams/1/end
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Im9ndXplcm9sIiwiZW1haWwiOiJvZUBvbmxpbmV5ZHQuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19zdXBlcnVzZXIiOnRydWV9LCJpYXQiOjE2MjU2ODg5ODEsImV4cCI6MTYyNTcxMDU4MX0.oM86mOrNnR6brvmNA3QMppBqE1vfFABnoaPqTkLJ5WM
+
+
+### Answer 
+POST {{host}}/api/v1/user/exams/answer
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Im9ndXplcm9sIiwiZW1haWwiOiJvZUBvbmxpbmV5ZHQuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19zdXBlcnVzZXIiOnRydWV9LCJpYXQiOjE2MjU1OTUwMzQsImV4cCI6MTYyNTYxNjYzNH0.N9aQ3YBO9AkUEW_mzMRxNVBdFDNYtqbT9ZaISC6lCY4
+Content-Type: application/json
+
+{
+    "question_id": 2,
+    "answer_id": 2
+}
+
+
+
+
+### Login sa
+POST {{host}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "oe@onlineydt.com",
+    "password": "010203asd"
+}
+
+### Register
+
+POST {{host}}/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "email": "oguzerol2@test.com",
+    "password": "010203asd",
+    "username": "oguztest2"
+}
+
+### Auth Me
+GET {{host}}/api/v1/auth/me
+Token:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Im9ndXplcm9sIiwiZW1haWwiOiJvZUBvbmxpbmV5ZHQuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19zdXBlcnVzZXIiOnRydWV9LCJpYXQiOjE2MTIzODQ2NzksImV4cCI6MTYxMjQwNjI3OX0.fy81LjNckN-9M0znLtJAHz5AqHTSaJcBSLMUBzNVTMs
+
+### Auth Me
+GET {{host}}/api/v1/user/account/me
+Token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6Im9ndXplcm9sIiwiZW1haWwiOiJvZUBvbmxpbmV5ZHQuY29tIiwiaXNfYWRtaW4iOmZhbHNlLCJpc19zdXBlcnVzZXIiOnRydWV9LCJpYXQiOjE2MTIzMDE5MTUsImV4cCI6MTYxMjMyMzUxNX0.YvNlS9AfFNvHGRF1wYy_I3x8WHetl8mknoUjT8kOubU
+
+
+
+
+
+### reset-link
+PUT {{host}}/api/v1/auth/reset-password
+Content-Type: application/json
+
+{
+    "resetLink": "asdasdasdasdasd",
+    "newPassword": "asdqwe123"
+}
+
+
+
+### forgot-link
+PUT {{host}}/api/v1/auth/forgot-password
+Content-Type: application/json
+
+{
+    "email": "oguzerol91@gmail.com"
+}
