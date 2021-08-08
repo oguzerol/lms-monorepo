@@ -15,7 +15,7 @@ import useUserExams from "../../core/querys/useUserExams";
 import Loading from "../../components/Loading";
 import { toastError } from "../../core/utils/toaster";
 import { useHistory } from "react-router";
-import { URL_EXAM } from "../../core/route/constants";
+import { API_USER_EXAMS, URL_EXAM } from "../../core/route/constants";
 
 export default function StandAloneExams() {
   const history = useHistory();
@@ -23,7 +23,7 @@ export default function StandAloneExams() {
 
   const startExam = (id: number) => {
     axios
-      .put(`user/exams/${id}/start`)
+      .put(`${API_USER_EXAMS}/${id}/start`)
       .then((res) => history.push(`${URL_EXAM}/${id}`))
       .catch((err) => {
         toastError(`Sınava başlanamadı. ${err.response.data.error}`);
